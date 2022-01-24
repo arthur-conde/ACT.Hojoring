@@ -1,75 +1,51 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CFC5E5E2-EFFE-4FC4-9EFD-79D15B1ABF45}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FFLogsRankingDonwloader</RootNamespace>
-    <AssemblyName>FFLogsRankingDonwloader</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net48</TargetFramework>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
     <CopySQLiteInteropFiles>false</CopySQLiteInteropFiles>
+    <AssemblyTitle>FFLogsRankingDonwloader</AssemblyTitle>
+    <Product>FFLogsRankingDonwloader</Product>
+    <Copyright>Copyright © anoyetta 2019-2020</Copyright>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <LangVersion>preview</LangVersion>
+    <PostBuildEvent />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>FFLogsRankingDonwloader.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent />
+  </PropertyGroup>
+  <Import Project="..\ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems" Label="Shared" />
+  <Target Name="EmbedSQLiteInteropFiles" BeforeTargets="ResolveReferences">
+    <ItemGroup>
+      <!-- Condition on item metadata trick adapted from https://stackoverflow.com/questions/5103026/in-msbuild-can-i-use-the-string-replace-function-on-a-metadata-item/8904902#8904902 -->
+      <EmbeddedResource Include="@(SQLiteInteropFiles)">
+        <!-- Syntax could be simplified in the future in MSBuild, see [Metadata should support instance methods](https://github.com/microsoft/msbuild/issues/1155) -->
+        <Link Condition="$([MSBuild]::ValueOrDefault('%(Identity)', '').Contains('x86'))">costura32\%(Filename)%(Extension)</Link>
+        <Link Condition="$([MSBuild]::ValueOrDefault('%(Identity)', '').Contains('x64'))">costura64\%(Filename)%(Extension)</Link>
+      </EmbeddedResource>
+    </ItemGroup>
+  </Target>
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\ACT.UltraScouter\ACT.UltraScouter.Core\ACT.UltraScouter.Core.csproj" />
+    <ProjectReference Include="..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ACT.UltraScouter\ACT.UltraScouter.Core\ACT.UltraScouter.Core.csproj">
-      <Project>{6d17f2c1-f9bd-4c9c-96c9-1a60ad975e4b}</Project>
-      <Name>ACT.UltraScouter.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj">
-      <Project>{22ebf8a4-eed1-4cd1-99eb-99665163a315}</Project>
-      <Name>FFXIV.Framework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
     <None Include="FodyWeavers.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -82,33 +58,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Costura.Fody">
-      <Version>5.7.0</Version>
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Fody">
-      <Version>6.6.0</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PackageReference Include="Fody" Version="6.6.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.Data.SQLite.Core">
-      <Version>1.0.112</Version>
-    </PackageReference>
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
   </ItemGroup>
-  <Import Project="..\ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems" Label="Shared" />
-  <Target Name="EmbedSQLiteInteropFiles" BeforeTargets="ResolveReferences">
-    <ItemGroup>
-      <!-- Condition on item metadata trick adapted from https://stackoverflow.com/questions/5103026/in-msbuild-can-i-use-the-string-replace-function-on-a-metadata-item/8904902#8904902 -->
-      <EmbeddedResource Include="@(SQLiteInteropFiles)">
-        <!-- Syntax could be simplified in the future in MSBuild, see [Metadata should support instance methods](https://github.com/microsoft/msbuild/issues/1155) -->
-        <Link Condition="$([MSBuild]::ValueOrDefault('%(Identity)', '').Contains('x86'))">costura32\%(Filename)%(Extension)</Link>
-        <Link Condition="$([MSBuild]::ValueOrDefault('%(Identity)', '').Contains('x64'))">costura64\%(Filename)%(Extension)</Link>
-      </EmbeddedResource>
-    </ItemGroup>
-  </Target>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
 </Project>

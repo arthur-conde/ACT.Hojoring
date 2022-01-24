@@ -1,55 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EA12D333-F0ED-4524-8BAD-B986B0137EA5}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ACT.SpecialSpellTimer</RootNamespace>
-    <AssemblyName>ACT.SpecialSpellTimer.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net48</TargetFramework>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile />
+    <AssemblyTitle>ACT.SpecialSpellTimer.Core</AssemblyTitle>
+    <Company>anoyetta</Company>
+    <Product>ACT.SpecialSpellTimer.Core</Product>
+    <Description>https://github.com/anoyetta/ACT.SpecialSpellTimer</Description>
+    <Copyright>Copyright © 2014-2020, anoyetta</Copyright>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
+    <NoWarn>CS8002</NoWarn>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>preview</LangVersion>
+    <UseWPF>true</UseWPF>
+    <PostBuildEvent />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>preview</LangVersion>
-    <NoWarn>CS8002</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <FileAlignment>512</FileAlignment>
-    <DebugSymbols>false</DebugSymbols>
-    <LangVersion>preview</LangVersion>
-    <NoWarn>CS8002</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <PostBuildEvent />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
@@ -67,285 +49,35 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.WebRequest" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Serialization" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParsedLogWorker.cs" />
-    <Compile Include="Config\Models\PartyComposiotionSelector.cs" />
-    <Compile Include="Config\Settings.Defaults.cs" />
-    <Compile Include="Config\Views\CalendarView.xaml.cs">
-      <DependentUpon>CalendarView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsLogFilterView.xaml.cs">
-      <DependentUpon>OptionsLogFilterView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TimelineAnalyzerView.xaml.cs">
-      <DependentUpon>TimelineAnalyzerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TimelineManagerView.xaml.cs">
-      <DependentUpon>TimelineManagerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TriggerTesterView.xaml.cs">
-      <DependentUpon>TriggerTesterView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TimelineTesterView.xaml.cs">
-      <DependentUpon>TimelineTesterView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TimelineView.xaml.cs">
-      <DependentUpon>TimelineView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TableCompiler.Placeholders.cs" />
-    <Compile Include="RaidTimeline\CombatAnalyzer.cs" />
-    <Compile Include="RaidTimeline\CombatLog.cs" />
-    <Compile Include="Config\BaseView.xaml.cs">
-      <DependentUpon>BaseView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Converters\SpellOrdersConverter.cs" />
-    <Compile Include="Config\Models\AdvancedNoticeConfig.cs" />
-    <Compile Include="Config\Models\ExpandedContainer.cs" />
-    <Compile Include="Config\Models\PreconditionSelector.cs" />
-    <Compile Include="Config\Models\ZoneSelector.cs" />
-    <Compile Include="Config\Models\JobSelector.cs" />
-    <Compile Include="Config\Models\TriggersTreeRoot.cs" />
-    <Compile Include="Config\ViewModels\SpellPanelConfigViewModel.Visual.cs" />
-    <Compile Include="Config\ViewModels\SpellConfigViewModel.Notice.cs" />
-    <Compile Include="Config\ViewModels\SpellConfigViewModel.Visual.cs" />
-    <Compile Include="Config\ViewModels\TickerConfigViewModel.Notice.cs" />
-    <Compile Include="Config\ViewModels\TickerConfigViewModel.Visual.cs" />
-    <Compile Include="Config\ViewModels\TickerConfigViewModel.cs" />
-    <Compile Include="Config\ViewModels\SpellConfigViewModel.cs" />
-    <Compile Include="Config\ViewModels\SpellPanelConfigViewModel.cs" />
-    <Compile Include="Config\ViewModels\TriggersViewModel.cs" />
-    <Compile Include="Config\Views\AddToTagView.xaml.cs">
-      <DependentUpon>AddToTagView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\DesignGridView.xaml.cs">
-      <DependentUpon>DesignGridView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\CopyConfigView.xaml.cs">
-      <DependentUpon>CopyConfigView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\IconBrowserView.xaml.cs">
-      <DependentUpon>IconBrowserView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\InformationsView.xaml.cs">
-      <DependentUpon>InformationsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsGeneralView.xaml.cs">
-      <DependentUpon>OptionsGeneralView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsLanguageView.xaml.cs">
-      <DependentUpon>OptionsLanguageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsLogView.xaml.cs">
-      <DependentUpon>OptionsLogView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsMiscView.xaml.cs">
-      <DependentUpon>OptionsMiscView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsTriggerView.xaml.cs">
-      <DependentUpon>OptionsTriggerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsTTSDictionaryView.xaml.cs">
-      <DependentUpon>OptionsTTSDictionaryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsView.xaml.cs">
-      <DependentUpon>OptionsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\OptionsVisualView.xaml.cs">
-      <DependentUpon>OptionsVisualView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\SpellConfigView.xaml.cs">
-      <DependentUpon>SpellConfigView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\SpellPanelConfigView.xaml.cs">
-      <DependentUpon>SpellPanelConfigView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TagView.xaml.cs">
-      <DependentUpon>TagView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TickerConfigView.xaml.cs">
-      <DependentUpon>TickerConfigView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Views\TriggersView.xaml.cs">
-      <DependentUpon>TriggersView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\FontSerializationHelper.cs" />
-    <Compile Include="Config\SerializableSize.cs" />
-    <Compile Include="Image\IconController.cs" />
-    <Compile Include="JobExtensions.cs" />
-    <Compile Include="LogBuffer.cs" />
-    <Compile Include="Models\ItemTags.cs" />
-    <Compile Include="Config\Models\TreeItem.cs" />
-    <Compile Include="Models\ITrigger.cs" />
-    <Compile Include="Models\ExportContainer.cs" />
-    <Compile Include="Models\SpellPanel.cs" />
-    <Compile Include="Models\PlaceholderTypes.cs" />
-    <Compile Include="Models\Spell.cs" />
-    <Compile Include="Models\TableCompiler.cs" />
-    <Compile Include="Models\Tag.cs" />
-    <Compile Include="Models\TagTable.cs" />
-    <Compile Include="Models\Ticker.cs" />
-    <Compile Include="RaidTimeline\TimelineActivityModel.cs" />
-    <Compile Include="RaidTimeline\TimelineBase.cs" />
-    <Compile Include="RaidTimeline\TimelineConstants.cs" />
-    <Compile Include="RaidTimeline\TimelineController.Notice.cs" />
-    <Compile Include="RaidTimeline\TimelineDefaultModel.cs" />
-    <Compile Include="RaidTimeline\TimelineController.cs" />
-    <Compile Include="RaidTimeline\ConstantKeywords.cs" />
-    <Compile Include="RaidTimeline\TimelineExpressionsModel.PreModel .cs" />
-    <Compile Include="RaidTimeline\TimelineExpressionsModel.SetModel.cs" />
-    <Compile Include="RaidTimeline\TimelineExpressionsModel.Table.cs" />
-    <Compile Include="RaidTimeline\TimelineExpressionsModel.Global.cs" />
-    <Compile Include="RaidTimeline\TimelineDumpModel.cs" />
-    <Compile Include="RaidTimeline\TimelineHPSyncModel.cs" />
-    <Compile Include="RaidTimeline\TimelineLoadModel.cs" />
-    <Compile Include="RaidTimeline\TimelineManager.cs" />
-    <Compile Include="RaidTimeline\TimelineModel.DefaultValues.cs" />
-    <Compile Include="RaidTimeline\TimelineModel.cs" />
-    <Compile Include="RaidTimeline\TimelinePositionSyncModel.cs" />
-    <Compile Include="RaidTimeline\TimelineScriptModel.cs" />
-    <Compile Include="RaidTimeline\TimelineSettings.cs" />
-    <Compile Include="RaidTimeline\TimelineStyle.cs" />
-    <Compile Include="RaidTimeline\TimelineSubroutineModel.cs" />
-    <Compile Include="RaidTimeline\TimelineTextCommands.cs" />
-    <Compile Include="RaidTimeline\TimelineTriggerModel.cs" />
-    <Compile Include="RaidTimeline\TimelineImageNoticeModel.cs" />
-    <Compile Include="RaidTimeline\TimelineExpressionsModel.cs" />
-    <Compile Include="RaidTimeline\TimelineVisualNoticeModel.cs" />
-    <Compile Include="RaidTimeline\Views\Sketchbook.xaml.cs">
-      <DependentUpon>Sketchbook.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RaidTimeline\Views\TimelineActivityControl.xaml.cs">
-      <DependentUpon>TimelineActivityControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RaidTimeline\Views\TimelineImageNoticeOverlay.xaml.cs">
-      <DependentUpon>TimelineImageNoticeOverlay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RaidTimeline\Views\TimelineNoticeOverlay.xaml.cs">
-      <DependentUpon>TimelineNoticeOverlay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RaidTimeline\Views\TimelineOverlay.xaml.cs">
-      <DependentUpon>TimelineOverlay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="resources\ILocalizable.cs" />
-    <Compile Include="resources\LocalizeExtensions.cs" />
-    <Compile Include="Sound\TTSDictionary.cs" />
-    <Compile Include="SpellsController.cs" />
-    <Compile Include="TickersController.cs" />
-    <Compile Include="Models\TickerTable.cs" />
-    <Compile Include="Config\Settings.cs" />
-    <Compile Include="PluginCore.cs" />
-    <Compile Include="Views\AdvancedSpellPanelWindow.xaml.cs">
-      <DependentUpon>AdvancedSpellPanelWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BarBackgroundConverter.cs" />
-    <Compile Include="Views\BrushAnimation.cs" />
-    <Compile Include="Views\BrightnessConverter.cs" />
-    <Compile Include="Views\POSView.xaml.cs">
-      <DependentUpon>POSView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LPSView.xaml.cs">
-      <DependentUpon>LPSView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TickerWindow.xaml.cs">
-      <DependentUpon>TickerWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SpellPanelTable.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Sound\SoundController.cs" />
-    <Compile Include="Views\OutlineTextBlockExtensions.cs" />
-    <Compile Include="Views\SpellControl.xaml.cs">
-      <DependentUpon>SpellControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PluginMainWorker.cs" />
-    <Compile Include="TextCommandController.cs" />
-    <Compile Include="Utility\ActInvoker.cs" />
-    <Compile Include="Utility\ConditionUtility.cs" />
-    <Compile Include="Utility\Logger.cs" />
-    <Compile Include="Utility\StringExtensions.cs" />
-    <Compile Include="Views\TickerControl.xaml.cs">
-      <DependentUpon>TickerControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WindowExtension.Visibility.cs" />
-    <Compile Include="Views\SpellPanelWindow.xaml.cs">
-      <DependentUpon>SpellPanelWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SpellTable.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="AvalonEdit">
-      <Version>6.1.2.30</Version>
-    </PackageReference>
-    <PackageReference Include="CommonServiceLocator">
-      <Version>2.0.6</Version>
-    </PackageReference>
-    <PackageReference Include="Extended.Wpf.Toolkit">
-      <Version>4.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="FontAwesome.WPF">
-      <Version>4.7.0.9</Version>
-    </PackageReference>
-    <PackageReference Include="Hjson">
-      <Version>3.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="MahApps.Metro.IconPacks">
-      <Version>4.8.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.Mvc">
-      <Version>5.2.7</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting">
-      <Version>3.8.0</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="NLog.Config">
-      <Version>4.7.12</Version>
-    </PackageReference>
-    <PackageReference Include="NLog.StructuredEvents">
-      <Version>0.4.0</Version>
-    </PackageReference>
-    <PackageReference Include="NPOI">
-      <Version>2.5.5</Version>
-    </PackageReference>
-    <PackageReference Include="Prism.Core">
-      <Version>8.1.97</Version>
-    </PackageReference>
-    <PackageReference Include="Prism.Wpf">
-      <Version>8.1.97</Version>
-    </PackageReference>
-    <PackageReference Include="RazorEngine">
-      <Version>3.10.0</Version>
-    </PackageReference>
-    <PackageReference Include="Sharlayan">
-      <Version>7.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.RegularExpressions">
-      <Version>4.3.1</Version>
-    </PackageReference>
+    <PackageReference Include="AvalonEdit" Version="6.1.2.30" />
+    <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="Hjson" Version="3.0.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.8.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.8.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NLog.Config" Version="4.7.12" />
+    <PackageReference Include="NLog.StructuredEvents" Version="0.4.0" />
+    <PackageReference Include="NPOI" Version="2.5.5" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <PackageReference Include="RazorEngine" Version="3.10.0" />
+    <PackageReference Include="Sharlayan" Version="7.0.1" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="resources\icon\Common\Apple.png">
@@ -1331,130 +1063,6 @@
     <Content Include="resources\icon\_blank.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Config\BaseView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\AddToTagView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\CalendarView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\DesignGridView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\CopyConfigView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Config\Views\IconBrowserView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\InformationsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsGeneralView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsLanguageView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsLogView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsMiscView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsLogFilterView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Config\Views\OptionsTriggerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsTTSDictionaryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\OptionsVisualView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\SpellConfigView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\SpellPanelConfigView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\TagView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\TickerConfigView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\TimelineAnalyzerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\TimelineManagerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\TriggerTesterView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Config\Views\TimelineTesterView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\TimelineView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Config\Views\TriggersView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RaidTimeline\Views\Sketchbook.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RaidTimeline\Views\TimelineActivityControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RaidTimeline\Views\TimelineImageNoticeOverlay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RaidTimeline\Views\TimelineNoticeOverlay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RaidTimeline\Views\TimelineOverlay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Content Include="resources\styles\TimelineOverlayResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1495,50 +1103,10 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Page Include="Views\AdvancedSpellPanelWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\POSView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\LPSView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TickerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SpellControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SpellPanelWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TickerControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ACT.SpecialSpellTimer.RazorModel\ACT.SpecialSpellTimer.RazorModel.csproj">
-      <Project>{450f38fa-7f7d-41b9-9bbb-503efc6c0a72}</Project>
-      <Name>ACT.SpecialSpellTimer.RazorModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj">
-      <Project>{22ebf8a4-eed1-4cd1-99eb-99665163a315}</Project>
-      <Name>FFXIV.Framework</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\ACT.SpecialSpellTimer.RazorModel\ACT.SpecialSpellTimer.RazorModel.csproj" />
+    <ProjectReference Include="..\..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="resources\CombatLogBase.xlsx">
@@ -1548,17 +1116,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <Compile Remove="Develop.cs" />
+    <Compile Remove="DQXUtility.cs" />
+    <Compile Remove="Settings.Global.cs" />
+    <Compile Remove="Utility\Language.cs" />
+  </ItemGroup>
 </Project>

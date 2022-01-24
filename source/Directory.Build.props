@@ -1,5 +1,7 @@
 <Project>
  <PropertyGroup>
    <LangVersion>preview</LangVersion>
+	 <SignAssembly>true</SignAssembly>
+	 <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
  </PropertyGroup>
 </Project>

@@ -1,103 +1,43 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CC751668-0CB9-4BDE-AF31-BA99DA079E59}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ACT.Hojoring</RootNamespace>
-    <AssemblyName>ACT.Hojoring</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFramework>net48</TargetFramework>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <AssemblyTitle>ACT.Hojoring</AssemblyTitle>
+    <Product>ACT.Hojoring</Product>
+    <Copyright>Copyright © 2017-2020, anoyetta</Copyright>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0.0</FileVersion>
+    <NoWarn>CS8002</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <LangVersion>preview</LangVersion>
+    <UseWPF>true</UseWPF>
+    <PostBuildEvent>@del /q /f $(TargetPath) &gt;nul
+@del /q /f $(TargetDir)bin\*.dll &gt;nul 2&gt;&amp;1
+
+@mkdir "$(TargetDir)bin" &gt;nul 2&gt;&amp;1
+@move /y "$(TargetDir)*.dll" "$(TargetDir)bin"&gt;nul
+
+@move /y "$(TargetDir)bin\RazorEngine.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\SLOBSharp.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\ACT.Hojoring.Common.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\ACT.Hojoring.Updater.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\ACT.SpecialSpellTimer.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\ACT.SpecialSpellTimer.RazorModel.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\ACT.TTSYukkuri.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\ACT.UltraScouter.dll" "$(TargetDir)"&gt;nul
+@move /y "$(TargetDir)bin\ACT.XIVLog.dll" "$(TargetDir)"&gt;nul
+</PostBuildEvent>
+    <PreBuildEvent />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>preview</LangVersion>
-    <NoWarn>CS8002</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>preview</LangVersion>
-    <NoWarn>CS8002</NoWarn>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Dummy.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj">
-      <Project>{c1bc2d6e-e10d-4a7f-900b-5fd84f39bf0a}</Project>
-      <Name>ACT.Hojoring.Activator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.Hojoring.Common\ACT.Hojoring.Common.csproj">
-      <Project>{7e1502b5-db00-4b2e-bdba-19e3379670b3}</Project>
-      <Name>ACT.Hojoring.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.Hojoring.Updater\ACT.Hojoring.Updater.csproj">
-      <Project>{611cc237-0ac4-4ab1-9f31-6e1bf589ca14}</Project>
-      <Name>ACT.Hojoring.Updater</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.SpecialSpellTimer.RazorModel\ACT.SpecialSpellTimer.RazorModel.csproj">
-      <Project>{450f38fa-7f7d-41b9-9bbb-503efc6c0a72}</Project>
-      <Name>ACT.SpecialSpellTimer.RazorModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.SpecialSpellTimer\ACT.SpecialSpellTimer\ACT.SpecialSpellTimer.csproj">
-      <Project>{ccf72089-92fa-4afb-bde7-869ca0e394f9}</Project>
-      <Name>ACT.SpecialSpellTimer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.TTSYukkuri\ACT.TTSYukkuri\ACT.TTSYukkuri.csproj">
-      <Project>{f20b280b-35b9-4462-a71e-e187cc2a60e7}</Project>
-      <Name>ACT.TTSYukkuri</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.UltraScouter\ACT.UltraScouter\ACT.UltraScouter.csproj">
-      <Project>{dda65b79-1b89-4223-ba81-c748755057e6}</Project>
-      <Name>ACT.UltraScouter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.XIVLog\ACT.XIVLog.csproj">
-      <Project>{d504e286-56ec-494f-82cd-fd71aefef606}</Project>
-      <Name>ACT.XIVLog</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj">
-      <Project>{22ebf8a4-eed1-4cd1-99eb-99665163a315}</Project>
-      <Name>FFXIV.Framework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Costura.Fody">
-      <Version>5.7.0</Version>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="FodyWeavers.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="FodyWeavers.xml" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>@del /q /f $(TargetPath) &gt;nul
 @del /q /f $(TargetDir)bin\*.dll &gt;nul 2&gt;&amp;1
@@ -117,7 +57,30 @@
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent />
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj" />
+    <ProjectReference Include="..\ACT.Hojoring.Common\ACT.Hojoring.Common.csproj" />
+    <ProjectReference Include="..\ACT.Hojoring.Updater\ACT.Hojoring.Updater.csproj" />
+    <ProjectReference Include="..\ACT.SpecialSpellTimer.RazorModel\ACT.SpecialSpellTimer.RazorModel.csproj" />
+    <ProjectReference Include="..\ACT.SpecialSpellTimer\ACT.SpecialSpellTimer\ACT.SpecialSpellTimer.csproj" />
+    <ProjectReference Include="..\ACT.TTSYukkuri\ACT.TTSYukkuri\ACT.TTSYukkuri.csproj" />
+    <ProjectReference Include="..\ACT.UltraScouter\ACT.UltraScouter\ACT.UltraScouter.csproj" />
+    <ProjectReference Include="..\ACT.XIVLog\ACT.XIVLog.csproj" />
+    <ProjectReference Include="..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
 </Project>

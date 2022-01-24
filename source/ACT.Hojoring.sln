@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 16.0.28714.193
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{F9A5BAFF-4C35-4F15-BDD6-81CB8EC6977D}"
 EndProject
@@ -9,52 +9,52 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIV.Framework", "FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj", "{22EBF8A4-EED1-4CD1-99EB-99665163A315}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.SpecialSpellTimer", "ACT.SpecialSpellTimer\ACT.SpecialSpellTimer\ACT.SpecialSpellTimer.csproj", "{CCF72089-92FA-4AFB-BDE7-869CA0E394F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.SpecialSpellTimer", "ACT.SpecialSpellTimer\ACT.SpecialSpellTimer\ACT.SpecialSpellTimer.csproj", "{CCF72089-92FA-4AFB-BDE7-869CA0E394F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.TTSYukkuri.Core", "ACT.TTSYukkuri\ACT.TTSYukkuri.Core\ACT.TTSYukkuri.Core.csproj", "{9A615561-6CEC-4857-870F-88F6FF07764C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.TTSYukkuri.Core", "ACT.TTSYukkuri\ACT.TTSYukkuri.Core\ACT.TTSYukkuri.Core.csproj", "{9A615561-6CEC-4857-870F-88F6FF07764C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.SpecialSpellTimer.Core", "ACT.SpecialSpellTimer\ACT.SpecialSpellTimer.Core\ACT.SpecialSpellTimer.Core.csproj", "{EA12D333-F0ED-4524-8BAD-B986B0137EA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.SpecialSpellTimer.Core", "ACT.SpecialSpellTimer\ACT.SpecialSpellTimer.Core\ACT.SpecialSpellTimer.Core.csproj", "{EA12D333-F0ED-4524-8BAD-B986B0137EA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.TTSYukkuri", "ACT.TTSYukkuri\ACT.TTSYukkuri\ACT.TTSYukkuri.csproj", "{F20B280B-35B9-4462-A71E-E187CC2A60E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.TTSYukkuri", "ACT.TTSYukkuri\ACT.TTSYukkuri\ACT.TTSYukkuri.csproj", "{F20B280B-35B9-4462-A71E-E187CC2A60E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.UltraScouter.Core", "ACT.UltraScouter\ACT.UltraScouter.Core\ACT.UltraScouter.Core.csproj", "{6D17F2C1-F9BD-4C9C-96C9-1A60AD975E4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.UltraScouter.Core", "ACT.UltraScouter\ACT.UltraScouter.Core\ACT.UltraScouter.Core.csproj", "{6D17F2C1-F9BD-4C9C-96C9-1A60AD975E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.UltraScouter", "ACT.UltraScouter\ACT.UltraScouter\ACT.UltraScouter.csproj", "{DDA65B79-1B89-4223-BA81-C748755057E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.UltraScouter", "ACT.UltraScouter\ACT.UltraScouter\ACT.UltraScouter.csproj", "{DDA65B79-1B89-4223-BA81-C748755057E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.Hojoring", "ACT.Hojoring\ACT.Hojoring.csproj", "{CC751668-0CB9-4BDE-AF31-BA99DA079E59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.Hojoring", "ACT.Hojoring\ACT.Hojoring.csproj", "{CC751668-0CB9-4BDE-AF31-BA99DA079E59}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EA12D333-F0ED-4524-8BAD-B986B0137EA5} = {EA12D333-F0ED-4524-8BAD-B986B0137EA5}
 		{9A615561-6CEC-4857-870F-88F6FF07764C} = {9A615561-6CEC-4857-870F-88F6FF07764C}
 		{6D17F2C1-F9BD-4C9C-96C9-1A60AD975E4B} = {6D17F2C1-F9BD-4C9C-96C9-1A60AD975E4B}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.Hojoring.Common", "ACT.Hojoring.Common\ACT.Hojoring.Common.csproj", "{7E1502B5-DB00-4B2E-BDBA-19E3379670B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.Hojoring.Common", "ACT.Hojoring.Common\ACT.Hojoring.Common.csproj", "{7E1502B5-DB00-4B2E-BDBA-19E3379670B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.Hojoring.Updater", "ACT.Hojoring.Updater\ACT.Hojoring.Updater.csproj", "{611CC237-0AC4-4AB1-9F31-6E1BF589CA14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.Hojoring.Updater", "ACT.Hojoring.Updater\ACT.Hojoring.Updater.csproj", "{611CC237-0AC4-4AB1-9F31-6E1BF589CA14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.XIVLog", "ACT.XIVLog\ACT.XIVLog.csproj", "{D504E286-56EC-494F-82CD-FD71AEFEF606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.XIVLog", "ACT.XIVLog\ACT.XIVLog.csproj", "{D504E286-56EC-494F-82CD-FD71AEFEF606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFLogsRankingDonwloader", "FFLogsRankingDonwloader\FFLogsRankingDonwloader.csproj", "{CFC5E5E2-EFFE-4FC4-9EFD-79D15B1ABF45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFLogsRankingDonwloader", "FFLogsRankingDonwloader\FFLogsRankingDonwloader.csproj", "{CFC5E5E2-EFFE-4FC4-9EFD-79D15B1ABF45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.Hojoring.Updater.Driver", "ACT.Hojoring.Updater.Driver\ACT.Hojoring.Updater.Driver.csproj", "{BE74A0EE-AFCC-4B0F-9ABA-698B5FEA871C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.Hojoring.Updater.Driver", "ACT.Hojoring.Updater.Driver\ACT.Hojoring.Updater.Driver.csproj", "{BE74A0EE-AFCC-4B0F-9ABA-698B5FEA871C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.SpecialSpellTimer.RazorModel", "ACT.SpecialSpellTimer.RazorModel\ACT.SpecialSpellTimer.RazorModel.csproj", "{450F38FA-7F7D-41B9-9BBB-503EFC6C0A72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.SpecialSpellTimer.RazorModel", "ACT.SpecialSpellTimer.RazorModel\ACT.SpecialSpellTimer.RazorModel.csproj", "{450F38FA-7F7D-41B9-9BBB-503EFC6C0A72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.Hojoring.Activator", "ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj", "{C1BC2D6E-E10D-4A7F-900B-5FD84F39BF0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.Hojoring.Activator", "ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj", "{C1BC2D6E-E10D-4A7F-900B-5FD84F39BF0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT.Hojoring.Debug", "ACT.Hojoring.Debug\ACT.Hojoring.Debug.csproj", "{466C29AA-D69A-4D20-AA75-F559D9528634}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACT.Hojoring.Debug", "ACT.Hojoring.Debug\ACT.Hojoring.Debug.csproj", "{466C29AA-D69A-4D20-AA75-F559D9528634}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ACT.Hojoring.Shared", "ACT.Hojoring.Shared\ACT.Hojoring.Shared.shproj", "{9DD140FA-30BD-4E10-B61A-F8A5B8837643}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{450f38fa-7f7d-41b9-9bbb-503efc6c0a72}*SharedItemsImports = 4
+		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{450f38fa-7f7d-41b9-9bbb-503efc6c0a72}*SharedItemsImports = 5
 		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{9dd140fa-30bd-4e10-b61a-f8a5b8837643}*SharedItemsImports = 13
-		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{ccf72089-92fa-4afb-bde7-869ca0e394f9}*SharedItemsImports = 4
-		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{cfc5e5e2-effe-4fc4-9efd-79d15b1abf45}*SharedItemsImports = 4
-		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{d504e286-56ec-494f-82cd-fd71aefef606}*SharedItemsImports = 4
-		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{dda65b79-1b89-4223-ba81-c748755057e6}*SharedItemsImports = 4
-		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{f20b280b-35b9-4462-a71e-e187cc2a60e7}*SharedItemsImports = 4
+		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{ccf72089-92fa-4afb-bde7-869ca0e394f9}*SharedItemsImports = 5
+		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{cfc5e5e2-effe-4fc4-9efd-79d15b1abf45}*SharedItemsImports = 5
+		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{d504e286-56ec-494f-82cd-fd71aefef606}*SharedItemsImports = 5
+		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{dda65b79-1b89-4223-ba81-c748755057e6}*SharedItemsImports = 5
+		ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems*{f20b280b-35b9-4462-a71e-e187cc2a60e7}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -209,7 +209,7 @@ Global
 		{C1BC2D6E-E10D-4A7F-900B-5FD84F39BF0A} = {EC98C548-6268-4B67-BC45-88DCD9B63960}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		        SolutionGuid = {2A11DDD1-7A46-4236-969A-3942CBE6A01A}
 		SolutionGuid = {91001FDF-B748-4513-A399-35F7E9BD37F8}
+		        SolutionGuid = {2A11DDD1-7A46-4236-969A-3942CBE6A01A}
 	EndGlobalSection
 EndGlobal

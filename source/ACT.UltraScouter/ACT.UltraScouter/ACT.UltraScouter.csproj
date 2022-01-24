@@ -1,101 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DDA65B79-1B89-4223-BA81-C748755057E6}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ACT.UltraScouter</RootNamespace>
-    <AssemblyName>ACT.UltraScouter</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     <CopySQLiteInteropFiles>false</CopySQLiteInteropFiles>
+    <AssemblyTitle>ACT.UltraScouter</AssemblyTitle>
+    <Company>anoyetta</Company>
+    <Product>ACT.UltraScouter</Product>
+    <Description>https://github.com/anoyetta/ACT.UltraScouter</Description>
+    <Copyright>Copyright (c) 2017-2020, anoyetta</Copyright>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <NoWarn>CS8002</NoWarn>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <LangVersion>preview</LangVersion>
+    <PreBuildEvent />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>preview</LangVersion>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>CS8002</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>preview</LangVersion>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>CS8002</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>ACT.Hojoring.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <PreBuildEvent />
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Advanced Combat Tracker">
-      <HintPath>..\..\ThirdParty\Advanced Combat Tracker.exe</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Plugin.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj">
-      <Project>{c1bc2d6e-e10d-4a7f-900b-5fd84f39bf0a}</Project>
-      <Name>ACT.Hojoring.Activator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.UltraScouter.Core\ACT.UltraScouter.Core.csproj">
-      <Project>{6d17f2c1-f9bd-4c9c-96c9-1a60ad975e4b}</Project>
-      <Name>ACT.UltraScouter.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj">
-      <Project>{22ebf8a4-eed1-4cd1-99eb-99665163a315}</Project>
-      <Name>FFXIV.Framework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next.StrongName">
-      <Version>4.0.2</Version>
-    </PackageReference>
-    <PackageReference Include="Costura.Fody">
-      <Version>5.7.0</Version>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="System.Data.SQLite.Core">
-      <Version>1.0.112</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.RegularExpressions">
-      <Version>4.3.1</Version>
-    </PackageReference>
-  </ItemGroup>
+  <Import Project="..\..\ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems" Label="Shared" />
   <Target Name="EmbedSQLiteInteropFiles" BeforeTargets="ResolveReferences">
     <ItemGroup>
       <!-- Condition on item metadata trick adapted from https://stackoverflow.com/questions/5103026/in-msbuild-can-i-use-the-string-replace-function-on-a-metadata-item/8904902#8904902 -->
@@ -107,6 +43,29 @@
     </ItemGroup>
   </Target>
   <ItemGroup>
+    <Reference Include="Advanced Combat Tracker">
+      <HintPath>..\..\ThirdParty\Advanced Combat Tracker.exe</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj" />
+    <ProjectReference Include="..\ACT.UltraScouter.Core\ACT.UltraScouter.Core.csproj" />
+    <ProjectReference Include="..\..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next.StrongName" Version="4.0.2" />
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ACT.Hojoring.ico" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
@@ -115,10 +74,4 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <Import Project="..\..\ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems" Label="Shared" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
 </Project>

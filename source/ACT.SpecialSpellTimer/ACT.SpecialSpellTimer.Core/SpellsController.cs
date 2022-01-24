@@ -257,8 +257,6 @@ namespace ACT.SpecialSpellTimer
                 }
             }
 
-            Logger.Write($"[{spell.Guid}] Match Extensions? {spell.MatchDateTime > DateTime.MinValue}");
-
             // 延長をマッチングする
             if (spell.MatchDateTime > DateTime.MinValue || spell.ToInstance)
             {
@@ -322,8 +320,6 @@ namespace ACT.SpecialSpellTimer
                                 targetSpell.SpellTitleReplaced = replacedTitle;
                             }
 
-                            Logger.Write($"[{targetSpell.Guid}] Guid Check");
-
                             // targetをキャプチャーしている？
                             if (!string.IsNullOrWhiteSpace(targetSpell.TargetName))
                             {
@@ -333,7 +329,6 @@ namespace ACT.SpecialSpellTimer
                                     // targetが当初のマッチングと一致するか確認する
                                     if (targetSpell.TargetName != targetName)
                                     {
-                                        Logger.Write($"[{targetSpell.Guid}] Spell not extending, target mismatch");
                                         extended = false;
                                     }
                                 }

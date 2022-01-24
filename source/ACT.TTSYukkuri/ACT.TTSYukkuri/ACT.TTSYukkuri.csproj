@@ -1,112 +1,79 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F20B280B-35B9-4462-A71E-E187CC2A60E7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ACT.TTSYukkuri</RootNamespace>
-    <AssemblyName>ACT.TTSYukkuri</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyTitle>ACT.TTSYukkuri</AssemblyTitle>
+    <Company>anoyetta</Company>
+    <Product>ACT.TTSYukkuri</Product>
+    <Description>https://github.com/anoyetta/ACT.TTSYukkuri</Description>
+    <Copyright>Copyright (c) 2015-2020, anoyetta</Copyright>
+    <AssemblyVersion>7.0.0.0</AssemblyVersion>
+    <FileVersion>7.0.0.0</FileVersion>
+    <NoWarn>CS8002</NoWarn>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <LangVersion>preview</LangVersion>
+    <PostBuildEvent>@del /q *.so &gt;nul
+@del /q *.dylib &gt;nul
+@del /q grpc_csharp_ext.*.dll &gt;nul
+</PostBuildEvent>
+    <PreBuildEvent />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>CS8002</NoWarn>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>preview</LangVersion>
-    <NoWarn>CS8002</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>ACT.Hojoring.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <PostBuildEvent>@del /q *.so &gt;nul
+@del /q *.dylib &gt;nul
+@del /q grpc_csharp_ext.*.dll &gt;nul
+</PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent />
+  </PropertyGroup>
+  <Import Project="..\..\ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems" Label="Shared" />
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
       <HintPath>..\..\ThirdParty\Advanced Combat Tracker.exe</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="CeVIO.Talk.RemoteService, Version=2.1.2.0, Culture=neutral, PublicKeyToken=8c8a62729f45e96f, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ThirdParty\CeVIO\7\CeVIO.Talk.RemoteService.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="CeVIO.Talk.RemoteService2">
       <HintPath>..\..\ThirdParty\CeVIO\AI\CeVIO.Talk.RemoteService2.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISpeak.cs" />
-    <Compile Include="Plugin.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\..\ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj" />
+    <ProjectReference Include="..\ACT.TTSYukkuri.Core\ACT.TTSYukkuri.Core.csproj" />
+    <ProjectReference Include="..\..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ACT.Hojoring.Activator\ACT.Hojoring.Activator.csproj">
-      <Project>{c1bc2d6e-e10d-4a7f-900b-5fd84f39bf0a}</Project>
-      <Name>ACT.Hojoring.Activator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ACT.TTSYukkuri.Core\ACT.TTSYukkuri.Core.csproj">
-      <Project>{9a615561-6cec-4857-870f-88f6ff07764c}</Project>
-      <Name>ACT.TTSYukkuri.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FFXIV.Framework\FFXIV.Framework\FFXIV.Framework.csproj">
-      <Project>{22ebf8a4-eed1-4cd1-99eb-99665163a315}</Project>
-      <Name>FFXIV.Framework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next.StrongName">
-      <Version>4.0.2</Version>
-    </PackageReference>
-    <PackageReference Include="Costura.Fody">
-      <Version>5.7.0</Version>
+    <PackageReference Include="BCrypt.Net-Next.StrongName" Version="4.0.2" />
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.Text.RegularExpressions">
-      <Version>4.3.1</Version>
-    </PackageReference>
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACT.Hojoring.ico" />
@@ -123,16 +90,4 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <Import Project="..\..\ACT.Hojoring.Shared\ACT.Hojoring.Shared.projitems" Label="Shared" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>@del /q *.so &gt;nul
-@del /q *.dylib &gt;nul
-@del /q grpc_csharp_ext.*.dll &gt;nul
-</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
 </Project>
