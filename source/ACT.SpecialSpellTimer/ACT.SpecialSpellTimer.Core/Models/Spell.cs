@@ -824,6 +824,7 @@ namespace ACT.SpecialSpellTimer.Models
             GridLength.Auto;
 
         /// <summary>インスタンス化されたスペルか？</summary>
+        /// <summary xml:lang="en">Is this an instanced spell?</summary>
         [XmlIgnore]
         public bool IsInstance { get; set; }
 
