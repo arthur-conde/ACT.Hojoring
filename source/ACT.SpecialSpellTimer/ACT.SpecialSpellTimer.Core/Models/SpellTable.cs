@@ -418,6 +418,29 @@ namespace ACT.SpecialSpellTimer.Models
             return instance;
         }
 
+        public Spell GetInstance(string spellTitle, Spell sourceSpell)
+        {
+            var key = $"{sourceSpell.Guid}+{spellTitle}";
+
+            var instance = default(Spell);
+
+            lock (this.instanceSpells)
+            {
+                if (this.instanceSpells.ContainsKey(key))
+                {
+                    instance = this.instanceSpells[key];
+                }
+            }
+
+            if (instance != default)
+            {
+                instance.SpellTitleReplaced = spellTitle;
+                instance.CompleteScheduledTime = DateTime.MinValue;
+            }
+
+            return instance ?? sourceSpell;
+        }
+
         /// <summary>
         /// インスタンス化されたスペルをすべて削除する
         /// </summary>

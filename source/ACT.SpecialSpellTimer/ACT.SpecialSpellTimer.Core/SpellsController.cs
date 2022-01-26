@@ -311,7 +311,7 @@ namespace ACT.SpecialSpellTimer
                             {
                                 // 同じタイトルのインスタンススペルを探す
                                 // 存在すればそれを使用して、なければ新しいインスタンスを生成する
-                                targetSpell = SpellTable.Instance.GetOrAddInstance(
+                                targetSpell = SpellTable.Instance.GetInstance(
                                     replacedTitle,
                                     targetSpell);
                             }
