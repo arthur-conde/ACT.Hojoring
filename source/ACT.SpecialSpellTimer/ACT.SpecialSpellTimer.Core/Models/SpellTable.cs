@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using FFXIV.Framework.Extensions;
+using Swordfish.NET.Collections;
 
 namespace ACT.SpecialSpellTimer.Models
 {
@@ -24,7 +26,7 @@ namespace ACT.SpecialSpellTimer.Models
         /// <summary>
         /// SpellTimerデータテーブル
         /// </summary>
-        private volatile ObservableCollection<Spell> table = new ObservableCollection<Spell>();
+        private volatile ConcurrentObservableCollection<Spell> table = new ConcurrentObservableCollection<Spell>();
 
         /// <summary>
         /// デフォルトのファイル
@@ -36,33 +38,24 @@ namespace ACT.SpecialSpellTimer.Models
         /// <summary>
         /// SpellTimerデータテーブル
         /// </summary>
-        public ObservableCollection<Spell> Table => this.table;
+        public ConcurrentObservableCollection<Spell> Table => this.table;
 
         public void Add(
             Spell spell)
         {
-            lock (this.table)
-            {
-                this.table.Add(spell);
-            }
+            this.table.Add(spell);
         }
 
         public void AddRange(
-            IEnumerable<Spell> spells)
+            IList<Spell> spells)
         {
-            lock (this.table)
-            {
-                this.table.AddRange(spells);
-            }
+            this.table.AddRange(spells);
         }
 
         public void Remove(
             Spell spell)
         {
-            lock (this.table)
-            {
-                this.table.Remove(spell);
-            }
+            this.table.Remove(spell);
         }
 
         /// <summary>
@@ -70,16 +63,13 @@ namespace ACT.SpecialSpellTimer.Models
         /// </summary>
         public static void ResetCount()
         {
-            lock (SpellTable.Instance)
-            {
-                var toRemove = SpellTable.Instance.instanceSpells
-                    .Where(x => !x.Value.IsNotResetAtWipeout)
-                    .ToArray();
+            var toRemove = SpellTable.Instance.instanceSpells
+                .Where(x => !x.Value.IsNotResetAtWipeout)
+                .ToArray();
 
-                foreach (var item in toRemove)
-                {
-                    SpellTable.Instance.instanceSpells.Remove(item.Key);
-                }
+            foreach (var item in toRemove)
+            {
+                SpellTable.Instance.instanceSpells.TryRemove(item.Key, out _);
             }
 
             foreach (var row in TableCompiler.Instance.SpellList)
@@ -369,8 +359,8 @@ namespace ACT.SpecialSpellTimer.Models
         /// <summary>
         /// インスタンス化されたスペルの辞書 key : スペルの表示名
         /// </summary>
-        private readonly Dictionary<string, Spell> instanceSpells =
-            new Dictionary<string, Spell>(32);
+        private readonly ConcurrentDictionary<string, Spell> instanceSpells =
+            new ConcurrentDictionary<string, Spell>();
 
         /// <summary>
         /// インスタンススペルを取得して返す
@@ -379,10 +369,7 @@ namespace ACT.SpecialSpellTimer.Models
         /// インスタンススペルのリスト</returns>
         public IReadOnlyList<Spell> GetInstanceSpells()
         {
-            lock (this.instanceSpells)
-            {
-                return this.instanceSpells.Values.ToList();
-            }
+            return this.instanceSpells.Values.ToList();
         }
 
         /// <summary>
@@ -397,20 +384,8 @@ namespace ACT.SpecialSpellTimer.Models
         {
             var key = $"{sourceSpell.Guid}+{spellTitle}";
 
-            var instance = default(Spell);
-
-            lock (this.instanceSpells)
-            {
-                if (this.instanceSpells.ContainsKey(key))
-                {
-                    instance = this.instanceSpells[key];
-                }
-                else
-                {
-                    instance = sourceSpell.CreateInstanceNew(spellTitle);
-                    this.instanceSpells[key] = instance;
-                }
-            }
+            var instance = this.instanceSpells.GetOrAdd(key, static (_, v) => v.Item2.CreateInstanceNew(v.Item1),
+                new Tuple<string, Spell>(spellTitle, sourceSpell));
 
             instance.SpellTitleReplaced = spellTitle;
             instance.CompleteScheduledTime = DateTime.MinValue;
@@ -422,17 +397,7 @@ namespace ACT.SpecialSpellTimer.Models
         {
             var key = $"{sourceSpell.Guid}+{spellTitle}";
 
-            var instance = default(Spell);
-
-            lock (this.instanceSpells)
-            {
-                if (this.instanceSpells.ContainsKey(key))
-                {
-                    instance = this.instanceSpells[key];
-                }
-            }
-
-            if (instance != default)
+            if (this.instanceSpells.TryGetValue(key, out var instance))
             {
                 instance.SpellTitleReplaced = spellTitle;
                 instance.CompleteScheduledTime = DateTime.MinValue;
@@ -446,10 +411,7 @@ namespace ACT.SpecialSpellTimer.Models
         /// </summary>
         public void RemoveInstanceSpellsAll()
         {
-            lock (this.instanceSpells)
-            {
-                this.instanceSpells.Clear();
-            }
+            this.instanceSpells.Clear();
         }
 
         #endregion To Instance spells
