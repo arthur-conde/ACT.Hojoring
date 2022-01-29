@@ -419,12 +419,26 @@ namespace ACT.SpecialSpellTimer.Models
 
         public void SetupChildrenSource()
         {
-            this.childrenSource = new CollectionViewSource()
+            var binding = new Binding
             {
                 Source = SpellTable.Instance.Table,
+                Path = new PropertyPath(nameof(SpellTable.Instance.Table.CollectionView)),
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+            };
+
+            this.childrenSource = new CollectionViewSource()
+            {
                 IsLiveFilteringRequested = true,
                 IsLiveSortingRequested = true,
             };
+
+            SpellTable.Instance.Table.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == nameof(SpellTable.Instance.Table.CollectionView))
+                    RaisePropertyChanged(nameof(Children));
+            };
+
+            BindingOperations.SetBinding(this.childrenSource, CollectionViewSource.SourceProperty, binding);
 
             this.childrenSource.Filter += (x, y) =>
              {
